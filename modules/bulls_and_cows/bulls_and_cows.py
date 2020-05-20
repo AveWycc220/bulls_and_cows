@@ -2,6 +2,9 @@
 import random
 
 
+SIZE = 4
+
+
 class BullsAndCows(): 
     """ Class for playing in Bulls and Cows """ 
     __computers_sequence = None
@@ -16,7 +19,7 @@ class BullsAndCows():
     def __create_sequence(self):
         """ Generate __computer_sequence """ 
         self.__computers_sequence = str()
-        while len(self.__computers_sequence) != 4:
+        while len(self.__computers_sequence) != SIZE:
             rand = random.randint(0, 9)
             if str(rand) not in self.__computers_sequence:
                 self.__computers_sequence  += str(rand)
@@ -27,15 +30,15 @@ class BullsAndCows():
             self.__users_tries += 1
             bulls = 0 
             cows = 0
-            for i in range(0, 4):
+            for i in range(0, SIZE):
                 if value[i] == self.__computers_sequence[i]:
                     bulls += 1
-            if bulls == 4:
+            if bulls == SIZE:
                 self.status = F"--You won. Game end.--\nCount of tries = {self.__users_tries}\n\
 Start new game, if you want to continue."
                 return bulls, cows
             else:
-                for i in range(0, 4):
+                for i in range(0, SIZE):
                     if (value[i] in self.__computers_sequence) and (value[i] != self.__computers_sequence[i]):
                         cows += 1
                 self.status = F"Bulls = {bulls} | Cows = {cows}"
@@ -43,8 +46,8 @@ Start new game, if you want to continue."
 
     def __is_correct(self, input_sequence):
         """ Validation check """
-        if input_sequence.isdigit() and len(input_sequence) == 4 and (len(set(input_sequence)) == 4):
+        if input_sequence.isdigit() and len(input_sequence) == SIZE and (len(set(input_sequence)) == SIZE):
             return True
         else:
-            self.status = 'Wrong input. Value must contain 4 unique digits'
+            self.status = F'Wrong input. Value must contain {SIZE} unique digits'
             return False

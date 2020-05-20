@@ -33,11 +33,13 @@ class BullsAndCows():
             if bulls == 4:
                 self.status = F"--You won. Game end.--\nCount of tries = {self.__users_tries}\n\
 Start new game, if you want to continue."
+                return bulls, cows
             else:
                 for i in range(0, 4):
                     if (value[i] in self.__computers_sequence) and (value[i] != self.__computers_sequence[i]):
                         cows += 1
                 self.status = F"Bulls = {bulls} | Cows = {cows}"
+                return bulls, cows
 
     def __is_correct(self, input_sequence):
         """ Validation check """

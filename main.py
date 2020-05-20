@@ -1,5 +1,7 @@
 from modules.bulls_and_cows.bulls_and_cows import BullsAndCows
 
-A = BullsAndCows('1256')
+A = BullsAndCows()
 print(A.status)
-print(A._BullsAndCows__computers_sequence)
+A._BullsAndCows__computers_sequence = '1579'
+A.check_value('1579')
+print(A.status)

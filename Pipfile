@@ -9,7 +9,6 @@ pylint = "*"
 
 [packages]
 flask = "*"
-flask-cahcing = "*"
 flask-caching = "*"
 
 [requires]

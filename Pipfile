@@ -8,6 +8,9 @@ pytest = "*"
 pylint = "*"
 
 [packages]
+flask = "*"
+flask-cahcing = "*"
+flask-caching = "*"
 
 [requires]
 python_version = "3.8"

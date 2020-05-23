@@ -42,7 +42,7 @@ Start new game, if you want to continue."
                 for i in range(0, SIZE):
                     if (value[i] in self.__computers_sequence) and (value[i] != self.__computers_sequence[i]):
                         cows += 1
-                self.status = F"Bulls = {bulls} | Cows = {cows}"
+                self.status = F"Bulls = {bulls} | Cows = {cows} | Nubmer of Tries = {self.__users_tries}"
                 return bulls, cows
         else:
             return None, None
@@ -53,5 +53,9 @@ Start new game, if you want to continue."
                 and len(input_sequence) == SIZE and (len(set(input_sequence)) == SIZE):
             return True
         else:
-            self.status = F'Wrong input. Value must contain {SIZE} unique digits'
+            if self.__computers_sequence is None:
+                self.status = F'--You won. Game end.--\nCount of tries = {self.__users_tries}\n\
+Start new game, if you want to continue.'
+            else:
+                self.status = F'Wrong input. Value must contain {SIZE} unique digits'
             return False

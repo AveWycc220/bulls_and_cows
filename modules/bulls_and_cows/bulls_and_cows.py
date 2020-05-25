@@ -16,6 +16,10 @@ class BullsAndCows():
         self.__users_tries = 0
         self.status = 'Game started'
 
+    @property
+    def sequence(self):
+        return self.__computers_sequence
+
     def __create_sequence(self):
         """ Generate __computer_sequence """
         self.__computers_sequence = str()
@@ -46,6 +50,22 @@ Start new game, if you want to continue."
                 return bulls, cows
         else:
             return None, None
+
+    @staticmethod
+    def check_value_static(value, sequence):
+        """ Static method. Check the value and output the number of cows and bulls. """
+        bulls = 0
+        cows = 0
+        for i in range(0, SIZE):
+            if value[i] == sequence[i]:
+                bulls += 1
+        if bulls == SIZE:
+            return bulls, cows
+        else:
+            for i in range(0, SIZE):
+                if (value[i] in sequence) and (value[i] != sequence[i]):
+                    cows += 1
+            return bulls, cows
 
     def __is_correct(self, input_sequence):
         """ Validation check. """

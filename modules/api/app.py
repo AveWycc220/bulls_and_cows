@@ -29,18 +29,21 @@ def start():
 
 @app.route('/v1.0/answer/<number>', methods=['GET'])
 def check(number):
-    if number in cache.get('results').keys():
-        answer = cache.get('results')[str(number)]
-        if answer == (None, None):
-            return jsonify({'status': game.status})
-        else:
-            if app.config['DEBUG']:
-                return jsonify(
-                    {'status': game.status, 'bulls': answer[0], 'cows': answer[1], 'debug_info': game.sequence})
+    if cache.get('results'):
+        if number in cache.get('results').keys():
+            answer = cache.get('results')[str(number)]
+            if answer == (None, None):
+                return jsonify({'status': game.status})
             else:
-                return jsonify({'status': game.status, 'bulls': answer[0], 'cows': answer[1]})
+                if app.config['DEBUG']:
+                    return jsonify(
+                        {'status': game.status, 'bulls': answer[0], 'cows': answer[1], 'debug_info': game.sequence})
+                else:
+                    return jsonify({'status': game.status, 'bulls': answer[0], 'cows': answer[1]})
+        else:
+            return abort(404, description="Wrong number")
     else:
-        return abort(404, description="Wrong number")
+        return abort(404, description=F"Game not started")
 
 
 def get_all_results():

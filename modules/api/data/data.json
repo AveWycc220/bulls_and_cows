@@ -1,0 +1,15 @@
+{
+  "users" : [
+    { "admin" :  "adminpassword"},
+    { "secondadmin" :  "2secondpasswordamdin"},
+    { "dudoser" :  "dudoserpassword"}
+  ],
+  "api_tokens" : [
+    { "admin" :  "admintoken"},
+    { "secondadmin" :  null},
+    { "dudoser" :  "dudoserapitoken"}
+  ],
+  "banlist" : [
+    { "dudoser" :  "dudoserapitoken"}
+  ]
+}

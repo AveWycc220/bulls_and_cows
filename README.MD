@@ -1,0 +1,1 @@
+# Simple realization of REST API on Flask.

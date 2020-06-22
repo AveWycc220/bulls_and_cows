@@ -39,3 +39,14 @@ class Auth:
         with open(rf"{THIS_FOLDER}/data/data.json", "w") as data:
             json.dump(temp_data, data, indent=4)
         return new_api_token
+
+    @staticmethod
+    def check_token(api_token):
+        """ Check api_token in def 'start' and 'answer' """
+        with open(rf"{THIS_FOLDER}/data/data.json", "r") as data:
+            temp_data = json.loads(data.read())
+            for i in range(len(temp_data['api_tokens'])):
+                if api_token in temp_data['api_tokens'][i].values():
+                    return True
+                else:
+                    return False
